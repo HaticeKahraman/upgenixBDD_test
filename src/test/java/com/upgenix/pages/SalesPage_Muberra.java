@@ -13,10 +13,10 @@ public class SalesPage_Muberra {
 
     }
 
-    @FindBy(className = "oe_menu_text")
+    @FindBy(xpath = "(//li[@style='display: block;'])[6]")
     public WebElement salesButton;
 
-    @FindBy(className = "oe_menu_text")
+    @FindBy(xpath = "/html/body/div[1]/div[1]/div[1]/div[6]/ul[1]/li[3]")
     public WebElement customerButton;
 
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o-kanban-button-new btn-default']")
@@ -28,7 +28,7 @@ public class SalesPage_Muberra {
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_form_button_save']")
     public WebElement saveButtonCustomer;
 
-    @FindBy(xpath = "/html/body/div[2]/div/div[1]")
+    @FindBy(xpath = "/html/body/div[2]")
     public WebElement errorMessage;
 
 

@@ -23,19 +23,20 @@ public class SalesStepDefinitions_Muberra {
 
     @When("User click to Sales module")
     public void userClickToSalesModule() {
-        BrowserUtilities.clickWithJS(salesPage.salesButton);
+        salesPage.salesButton.click();
         BrowserUtilities.waitFor(5);
     }
 
     @And("User click Customers button")
     public void userClickCustomersButton() {
         salesPage.customerButton.click();
-
+        BrowserUtilities.waitFor(5);
     }
 
     @Then("User click Create button on the top of page")
     public void userClickCreateButtonOnTheTopOfPage() {
         salesPage.createButton.click();
+        BrowserUtilities.waitFor(5);
 
     }
 
@@ -43,7 +44,9 @@ public class SalesStepDefinitions_Muberra {
     public void userFillOutTheNamesFieldBy(String name) {
 
         salesPage.nameInputBox.click();
+        BrowserUtilities.waitFor(5);
         salesPage.nameInputBox.sendKeys(name);
+        BrowserUtilities.waitFor(5);
 
     }
 
@@ -51,6 +54,7 @@ public class SalesStepDefinitions_Muberra {
     public void userClickSaveButtonOnTheTopOfThePage() {
 
         salesPage.saveButtonCustomer.click();
+        BrowserUtilities.waitFor(5);
     }
 
     @When("User leave blank names field")
@@ -60,17 +64,19 @@ public class SalesStepDefinitions_Muberra {
 
     }
 
-    @Then("User should see an error message {string} displayed")
-    public void userShouldSeeAnErrorMessageDisplayed(String arg0) {
+    @Then("User should see an error message displayed")
+    public void userShouldSeeAnErrorMessageDisplayed() {
 
-        Assert.assertTrue(salesPage.errorMessage.isDisplayed());
+        Assert.assertTrue(salesPage.errorMessage.getAttribute("outerText").contains("The following fields are invalid"));
 
     }
 
     @Then("User see page title contains customer {string} successfully.")
     public void user_see_page_title_contains_customer_successfully(String pageTitle){
 
-        Assert.assertTrue(Driver.getDriver().getTitle().contains(pageTitle));
+
+
+
 
     }
 

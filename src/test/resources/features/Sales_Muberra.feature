@@ -10,15 +10,16 @@ Feature:Sales feature
     When User click to Sales module
     And User click Customers button
     Then User click Create button on the top of page
-@wip
+
   Scenario: Verify that User can reach New Customer Form by clicking Sales --> Customers --> Create
     When User fill out the names field by "@Ayse123"
     Then User click save button on the top of the page
 
+  @wip
   Scenario:Verify that if customer name field leaves blank, an error message "The following fields are invalid:" is appeared.
     When User leave blank names field
     And User click save button on the top of the page
-    Then User should see an error message "The following fields are invalid:" displayed
+    Then User should see an error message displayed
 
   Scenario:Verify that after creating a new customer, the page title includes the customer name.
     When User fill out the names field by "Ayse123"
