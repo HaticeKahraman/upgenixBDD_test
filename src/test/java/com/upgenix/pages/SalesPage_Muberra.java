@@ -31,6 +31,11 @@ public class SalesPage_Muberra {
     @FindBy(xpath = "/html/body/div[2]")
     public WebElement errorMessage;
 
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[1]/div/input")
+    public WebElement searchBox;
+
+    @FindBy(xpath = "/html/body/div[1]/div[2]/div[2]/div/div/div/div[1]")
+    public WebElement visibleCustomerNameOnCustomerPage;
 
 
 

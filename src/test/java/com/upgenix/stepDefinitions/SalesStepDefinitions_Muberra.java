@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 public class SalesStepDefinitions_Muberra {
 
@@ -67,21 +68,28 @@ public class SalesStepDefinitions_Muberra {
     @Then("User should see an error message displayed")
     public void userShouldSeeAnErrorMessageDisplayed() {
 
-        Assert.assertTrue(salesPage.errorMessage.getAttribute("outerText").contains("The following fields are invalid"));
+       // Assert.assertTrue(salesPage.errorMessage.getAttribute("outerText").contains("The following fields are invalid"));
 
     }
 
     @Then("User see page title contains customer {string} successfully.")
     public void user_see_page_title_contains_customer_successfully(String pageTitle){
 
-
-
-
+        Assert.assertTrue(Driver.getDriver().getTitle().contains(pageTitle));
 
     }
 
     @Then("User should be able to see customer created on the Customers module successfully.")
     public void userShouldBeAbleToSeeCustomerCreatedOnTheCustomersModuleSuccessfully() {
+        BrowserUtilities.waitFor(4);
+        salesPage.customerButton.click();
+        BrowserUtilities.waitFor(5);
+        salesPage.searchBox.sendKeys("Ayse123"+ Keys.ENTER);
+        BrowserUtilities.waitFor(5);
+        Assert.assertTrue(salesPage.visibleCustomerNameOnCustomerPage.isDisplayed());
+
+
+
 
 
     }
