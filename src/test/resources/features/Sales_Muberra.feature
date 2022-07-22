@@ -15,7 +15,7 @@ Feature:Sales feature
     When User fill out the names field by "@Ayse123"
     Then User click save button on the top of the page
 
-
+  @wip
   Scenario:Verify that if customer name field leaves blank, an error message "The following fields are invalid:" is appeared.
     When User leave blank names field
     And User click save button on the top of the page
@@ -27,7 +27,7 @@ Feature:Sales feature
     And User click save button on the top of the page
     Then User see page title contains customer "Ayse123" successfully.
 
-  @wip
+
   Scenario: Verify that the user should be able to see created customer is listed after clicking the Customers module.
     When User fill out the names field by "Ayse123"
     And User click save button on the top of the page

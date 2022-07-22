@@ -55,7 +55,7 @@ public class SalesStepDefinitions_Muberra {
     public void userClickSaveButtonOnTheTopOfThePage() {
 
         salesPage.saveButtonCustomer.click();
-        BrowserUtilities.waitFor(5);
+        //BrowserUtilities.waitFor();
     }
 
     @When("User leave blank names field")
@@ -68,7 +68,7 @@ public class SalesStepDefinitions_Muberra {
     @Then("User should see an error message displayed")
     public void userShouldSeeAnErrorMessageDisplayed() {
 
-       // Assert.assertTrue(salesPage.errorMessage.getAttribute("outerText").contains("The following fields are invalid"));
+       Assert.assertTrue(salesPage.errorMessage.getAttribute("outerText").startsWith("The following fields are invalid"));
 
     }
 

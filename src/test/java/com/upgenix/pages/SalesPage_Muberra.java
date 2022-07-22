@@ -28,7 +28,7 @@ public class SalesPage_Muberra {
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_form_button_save']")
     public WebElement saveButtonCustomer;
 
-    @FindBy(xpath = "/html/body/div[2]")
+    @FindBy(className= "o_notification_manager")
     public WebElement errorMessage;
 
     @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[1]/div/input")
