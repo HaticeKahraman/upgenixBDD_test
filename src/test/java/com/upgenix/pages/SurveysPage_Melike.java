@@ -31,4 +31,7 @@ public class SurveysPage_Melike extends BasePage {
 
     @FindBy (className = "o_thread_message_content")
     public WebElement surveyCreatedMessage;
+
+    @FindBy (xpath = "(//div[@class='o_kanban_record_top'])[3]")
+    public WebElement createdSurvey;
 }

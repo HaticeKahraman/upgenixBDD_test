@@ -7,6 +7,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
 import static org.junit.Assert.*;
 
 public class SurveysStepDef_Melike {
@@ -18,8 +19,8 @@ public class SurveysStepDef_Melike {
         BasePage.loginAsPosManager();
     }
 
-    @When("User clicks Surveys from the horizontal menu")
-    public void user_clicks_from_the_horizontal_menu() {
+    @When("User clicks Surveys module")
+    public void user_clicks_surveys_module() {
 
         surveysPage_melike.surveysLink.click();
     }
@@ -34,7 +35,7 @@ public class SurveysStepDef_Melike {
     @Then("User should see Surveys {string} header")
     public void user_should_see_header(String newWord) {
 
-       assertEquals(surveysPage_melike.Surveys_NewHeader.getText(),newWord);
+        assertEquals(surveysPage_melike.Surveys_NewHeader.getText(), newWord);
     }
 
     @And("User clicks Save button")
@@ -42,23 +43,32 @@ public class SurveysStepDef_Melike {
         surveysPage_melike.saveButton.click();
 
     }
+
     @Then("User should see {string} error message")
     public void user_should_see_error_message(String errorMsg) {
         //System.out.println(surveysPage_melike.errorMessage.getText());
-        assertEquals(surveysPage_melike.errorMessage.getText(),errorMsg);
+        assertEquals(surveysPage_melike.errorMessage.getText(), errorMsg);
 
     }
+
     @When("User writes {string} in the title input box")
     public void user_writes_in_the_title_input_box(String titleName) {
         surveysPage_melike.titleInputBox.sendKeys(titleName);
     }
+
     @Then("User should see {string} message")
     public void user_should_see_message(String surveyCreatedMsg) {
         //System.out.println(surveysPage_melike.surveyCreatedMessage.getText());
-        assertEquals(surveysPage_melike.surveyCreatedMessage.getText(),surveyCreatedMsg);
+        assertEquals(surveysPage_melike.surveyCreatedMessage.getText(), surveyCreatedMsg);
 
     }
 
+    @Then("User should see {string} is listed")
+    public void user_should_see_is_listed(String createdSurveyTitle) {
+        //System.out.println(surveysPage_melike.createdSurvey.getText());
+        assertTrue(surveysPage_melike.createdSurvey.isDisplayed());
+
+    }
 
 
 }
