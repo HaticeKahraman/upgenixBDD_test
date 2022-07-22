@@ -52,4 +52,7 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "//div[@class='o_notification_title']")
     public WebElement errorMessage;
 
+    @FindBy(xpath = "(//span[@class='o_datepicker_button'])[3]")
+    public WebElement startDateBtn;
+
 }
