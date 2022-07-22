@@ -51,4 +51,5 @@ public class CalendarPage_Nurefsan {
 
     @FindBy(xpath = "//div[@class='o_notification_title']")
     public WebElement errorMessage;
+
 }
