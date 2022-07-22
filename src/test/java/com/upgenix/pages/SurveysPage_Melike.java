@@ -20,4 +20,15 @@ public class SurveysPage_Melike extends BasePage {
     @FindBy (xpath = "(//ol[@class='breadcrumb']/li)[2]")
     public WebElement Surveys_NewHeader;
 
+    @FindBy (className = "o_notification_title")
+    public WebElement errorMessage;
+
+    @FindBy (xpath = "//button[@accesskey='s']")
+    public WebElement saveButton;
+
+    @FindBy (name = "title")
+    public WebElement titleInputBox;
+
+    @FindBy (className = "o_thread_message_content")
+    public WebElement surveyCreatedMessage;
 }
