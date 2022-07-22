@@ -3,9 +3,12 @@ package com.upgenix.stepDefinitions;
 import com.upgenix.pages.BasePage;
 import com.upgenix.pages.CalendarPage_Nurefsan;
 import com.upgenix.utilities.BrowserUtilities;
+import com.upgenix.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.interactions.Actions;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -44,7 +47,7 @@ public class CalendarStepDef_Nurefsan extends BasePage {
         assertTrue(calendarPage.firstWeeklyDisplay.getAttribute("innerHTML").contains("Week"));
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////change display feature//////////////////////////////////////////////////
 
     @When("user can change display between Day-Week-Month")
     public void user_can_change_display_between_day_week_month() {
@@ -62,7 +65,7 @@ public class CalendarStepDef_Nurefsan extends BasePage {
         }
     }
 
-    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////create event feature////////////////////////////////////////////
 
     @When("user clicks on time box {string}")
     public void user_clicks_on_time_box(String string) {
@@ -70,8 +73,8 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     }
 
-    @When("user writes the event to the {string} input box.")
-    public void user_writes_the_event_to_the_input_box(String eventName) {
+    @And("user writes the event as {string} to the summary input box.")
+    public void userWritesTheEventAsToTheSummaryInputBox(String eventName) {
         calendarPage.eventCreateInput.sendKeys(eventName);
         calendarPage.createBtn.click();
     }
@@ -82,7 +85,22 @@ public class CalendarStepDef_Nurefsan extends BasePage {
         String actualEventName = calendarPage.verifyEvent.getText();
         assertEquals(expectedEventName, actualEventName);
     }
-//////////////////////////////////////////////////////////////////////////
+
+    //////////////////////////////////edit event (negative/bug)///////////////////////////
+
+    @And("user choose {string}")
+    public void userChoose(String invalidDatesRange) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.click(calendarPage.startDateBtn);
+    }
+
+    @Then("user can not edit event with an invalid dates range")
+    public void user_can_not_edit_event_with_an_invalid_dates_range() {
+        calendarPage.saveBtn.click();
+        //assert???
+    }
+
+//////////////////////////////////edit event (negative)///////////////////////////
 
 
     @When("user clicks existing event that created before")
@@ -102,7 +120,9 @@ public class CalendarStepDef_Nurefsan extends BasePage {
         assertEquals(expectedErrorMessage, calendarPage.errorMessage.getAttribute("outerText"));
 
     }
-    ///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    ////////////////////////////////////////edit event (positive)///////////////////////////////////////////////////
 
 }
 
