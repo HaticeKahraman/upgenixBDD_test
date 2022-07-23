@@ -55,4 +55,13 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "(//span[@class='o_datepicker_button'])[3]")
     public WebElement startDateBtn;
 
+    @FindBy(xpath = "//div[@name='categ_ids']")
+    public WebElement tagsDropDown;
+
+    @FindBy(xpath = "//a[text()='Interview']")
+    public WebElement tagsDropDownSelectInterview;
+
+    @FindBy(xpath = "//td[@data-date='2022-07-01']")
+    public WebElement dragAndDrop;
+
 }

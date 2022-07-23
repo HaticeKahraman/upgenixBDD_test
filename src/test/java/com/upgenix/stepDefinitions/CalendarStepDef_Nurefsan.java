@@ -24,22 +24,24 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @When("user clicks to the {string} button")
     public void user_clicks_to_the_button(String Btn) {
-        if (Btn.equals("Calendar")) {
-            BrowserUtilities.sleep(5);
-            calendarPage.calendarBtn.click();
-        } else if (Btn.equals("Month")) {
-            calendarPage.monthBtn.click();
-        } else if (Btn.equals("Create")) {
-            calendarPage.createBtn.click();
-            BrowserUtilities.sleep(5);
-        } else if (Btn.equals("Edit")) {
-            calendarPage.editBtn.click();
-        } else if (Btn.equals("Save")) {
-            calendarPage.saveBtn.click();
-        } else {
-            System.out.println("Button is not expected!");
-        }
 
+        switch (Btn) {
+            case "Calendar":
+                BrowserUtilities.sleep(5);
+                calendarPage.calendarBtn.click();
+            case "Month":
+                calendarPage.monthBtn.click();
+            case "Create":
+                calendarPage.createBtn.click();
+                BrowserUtilities.sleep(5);
+            case "Edit":
+                calendarPage.editBtn.click();
+            case "Save":
+                calendarPage.saveBtn.click();
+            default:
+                System.out.println("Button is unexpected!");
+
+        }
     }
 
     @Then("user first land on a weekly display")
@@ -123,6 +125,39 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
 
     ////////////////////////////////////////edit event (positive)///////////////////////////////////////////////////
+
+    @When("user edits event name as {string}")
+    public void user_edits_event_name_as(String editEventName) {
+        calendarPage.editEventName.clear();
+        calendarPage.editEventName.click();
+        calendarPage.editEventName.sendKeys(editEventName);
+    }
+
+//    @When("user edits date as {string}")
+//    public void user_edits_date_as(String string) {
+//
+//    }
+
+    @When("user selects tag as interview from tags drop-down")
+    public void user_selects_tag_as_interview_from_tags_drop_down() {
+        calendarPage.tagsDropDown.click();
+        calendarPage.tagsDropDownSelectInterview.click();
+        BrowserUtilities.sleep(3);
+    }
+
+    ////////////////////////////////////////edit event(dragAndDrop)///////////////////////////////////////////////////
+
+    @When("user can drag and drop the {string} event to {string}")
+    public void user_can_drag_and_drop_the_event_to(String string, String string2) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.dragAndDrop(calendarPage.meetingEvent, calendarPage.dragAndDrop).perform();
+        BrowserUtilities.sleep(3);
+    }
+
+//    @Then("user should be able to see the {string} event day has been successfully changed")
+//    public void user_should_be_able_to_see_the_event_day_has_been_successfully_changed(String string) {
+//
+//    }
 
 }
 
