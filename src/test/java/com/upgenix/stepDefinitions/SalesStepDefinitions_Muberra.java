@@ -74,7 +74,7 @@ public class SalesStepDefinitions_Muberra {
 
     @Then("User see page title contains customer {string} successfully.")
     public void user_see_page_title_contains_customer_successfully(String pageTitle){
-
+        BrowserUtilities.sleep(4);
         Assert.assertTrue(Driver.getDriver().getTitle().contains(pageTitle));
 
     }
