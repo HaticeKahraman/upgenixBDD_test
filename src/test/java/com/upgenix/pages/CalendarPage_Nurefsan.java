@@ -25,7 +25,7 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div[1]/div/div/button[3]")
     public WebElement monthBtn;
 
-    @FindBy(xpath = "//div[@class='fc-scroller fc-day-grid-container']/div")
+    @FindBy(xpath = "//tbody[@class='fc-body']")
     public WebElement dataDate;
 
     @FindBy(xpath = "//input[@class='o_input']")
@@ -34,9 +34,10 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")
     public WebElement createBtn;
 
-    @FindBy(xpath = "(//td[@class='fc-event-container'])[1]")
+    @FindBy(xpath = "//td[@class='fc-event-container']")
     public WebElement meetingEvent;
 
+    //(//td[@class='fc-event-container'])[1]
     @FindBy(xpath = "//span[text()='Edit']")
     public WebElement editBtn;
 
@@ -52,7 +53,7 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "//div[@class='o_notification_title']")
     public WebElement errorMessage;
 
-    @FindBy(xpath = "(//span[@class='o_datepicker_button'])[3]")
+    @FindBy(xpath = "(//input[@name='start'])[1]")
     public WebElement startDateBtn;
 
     @FindBy(xpath = "//div[@name='categ_ids']")
