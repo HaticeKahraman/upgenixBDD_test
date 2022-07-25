@@ -31,7 +31,7 @@ Feature: Upgenix calendar feature
     And user clicks to the "Month" button
     And user clicks existing event that created before
     And user clicks to the "Edit" button
-   #And user choose "<invalid dates range>"
+    And user choose "<invalid dates range>"
     Then user clicks to the "Save" button
     Then user can not edit event with an invalid dates range
 
@@ -68,7 +68,7 @@ Feature: Upgenix calendar feature
     When user clicks to the "Calendar" button
     And user clicks to the "Month" button
     When user can drag and drop the "meeting" event to "2022-07-01"
-    #Then user should be able to see the "meeting" event day has been successfully changed
+    Then user should be able to see the "meeting" event day has been successfully changed
 
 
 
