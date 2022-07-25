@@ -8,6 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import static org.junit.Assert.assertEquals;
@@ -24,25 +25,44 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @When("user clicks to the {string} button")
     public void user_clicks_to_the_button(String Btn) {
-
-        switch (Btn) {
-            case "Calendar":
-                BrowserUtilities.sleep(5);
-                calendarPage.calendarBtn.click();
-            case "Month":
-                calendarPage.monthBtn.click();
-            case "Create":
-                calendarPage.createBtn.click();
-                BrowserUtilities.sleep(5);
-            case "Edit":
-                calendarPage.editBtn.click();
-            case "Save":
-                calendarPage.saveBtn.click();
-            default:
-                System.out.println("Button is unexpected!");
+        if (Btn.equals("Calendar")) {
+            BrowserUtilities.sleep(5);
+            calendarPage.calendarBtn.click();
+        } else if (Btn.equals("Month")) {
+            calendarPage.monthBtn.click();
+        } else if (Btn.equals("Create")) {
+            calendarPage.createBtn.click();
+            BrowserUtilities.sleep(5);
+        } else if (Btn.equals("Edit")) {
+            calendarPage.editBtn.click();
+        } else if (Btn.equals("Save")) {
+            calendarPage.saveBtn.click();
+        } else {
+            System.out.println("Button is not expected!");
+        }
+//        switch (Btn) {
+//            case "Calendar":
+//                BrowserUtilities.sleep(5);
+//                calendarPage.calendarBtn.click();
+//                break;
+//            case "Month":
+//                calendarPage.monthBtn.click();
+//                break;
+//            case "Create":
+//                calendarPage.createBtn.click();
+//                BrowserUtilities.sleep(5);
+//                break;
+//            case "Edit":
+//                calendarPage.editBtn.click();
+//                break;
+//            case "Save":
+//                calendarPage.saveBtn.click();
+//                break;
+//            default:
+//                System.out.println("Button is unexpected!");
 
         }
-    }
+
 
     @Then("user first land on a weekly display")
     public void user_first_land_on_a_weekly_display() {
@@ -92,8 +112,10 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @And("user choose {string}")
     public void userChoose(String invalidDatesRange) {
-        Actions actions = new Actions(Driver.getDriver());
-        actions.click(calendarPage.startDateBtn);
+        calendarPage.startDateBtn.click();
+        calendarPage.startDateBtn.clear();
+        calendarPage.startDateBtn.sendKeys(invalidDatesRange);
+
     }
 
     @Then("user can not edit event with an invalid dates range")
@@ -107,7 +129,7 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @When("user clicks existing event that created before")
     public void user_clicks_existing_event_that_created_before() {
-        calendarPage.meetingEvent.click();
+        //calendarPage.meetingEvent.click();
     }
 
     @When("user deletes event name")
@@ -149,15 +171,16 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @When("user can drag and drop the {string} event to {string}")
     public void user_can_drag_and_drop_the_event_to(String string, String string2) {
+
         Actions actions = new Actions(Driver.getDriver());
         actions.dragAndDrop(calendarPage.meetingEvent, calendarPage.dragAndDrop).perform();
         BrowserUtilities.sleep(3);
     }
 
-//    @Then("user should be able to see the {string} event day has been successfully changed")
-//    public void user_should_be_able_to_see_the_event_day_has_been_successfully_changed(String string) {
-//
-//    }
+    @Then("user should be able to see the {string} event day has been successfully changed")
+    public void user_should_be_able_to_see_the_event_day_has_been_successfully_changed(String string) {
+
+    }
 
 }
 
