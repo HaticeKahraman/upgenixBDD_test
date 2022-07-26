@@ -8,8 +8,13 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -28,13 +33,17 @@ public class CalendarStepDef_Nurefsan extends BasePage {
         if (Btn.equals("Calendar")) {
             BrowserUtilities.sleep(5);
             calendarPage.calendarBtn.click();
+            BrowserUtilities.sleep(5);
         } else if (Btn.equals("Month")) {
+            BrowserUtilities.sleep(5);
             calendarPage.monthBtn.click();
+            BrowserUtilities.sleep(5);
         } else if (Btn.equals("Create")) {
             calendarPage.createBtn.click();
             BrowserUtilities.sleep(5);
         } else if (Btn.equals("Edit")) {
             calendarPage.editBtn.click();
+            BrowserUtilities.sleep(5);
         } else if (Btn.equals("Save")) {
             calendarPage.saveBtn.click();
         } else {
@@ -66,7 +75,8 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @Then("user first land on a weekly display")
     public void user_first_land_on_a_weekly_display() {
-        assertTrue(calendarPage.firstWeeklyDisplay.getAttribute("innerHTML").contains("Week"));
+        //assertTrue(calendarPage.firstWeeklyDisplay.getAttribute("innerHTML").contains("Week"));
+        assertEquals(true, calendarPage.firstWeeklyDisplay.getAttribute("innerHTML").contains("Week"));
     }
 
     ////////////////////////////////////change display feature//////////////////////////////////////////////////
@@ -89,21 +99,21 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     /////////////////////////////////////create event feature////////////////////////////////////////////
 
-    @When("user clicks on time box {string}")
-    public void user_clicks_on_time_box(String string) {
-        calendarPage.dataDate.click();
-
+    @When("user clicks on time box")
+    public void user_clicks_on_time_box() {
+            calendarPage.calendarDays.get(1).click();
+            BrowserUtilities.sleep(3);
     }
 
     @And("user writes the event as {string} to the summary input box.")
     public void userWritesTheEventAsToTheSummaryInputBox(String eventName) {
         calendarPage.eventCreateInput.sendKeys(eventName);
-        calendarPage.createBtn.click();
+        BrowserUtilities.sleep(3);
     }
 
     @Then("user can see the created event on the calendar widget")
     public void user_can_see_the_created_event_on_the_calendar_widget() {
-        String expectedEventName = "Summary";
+        String expectedEventName = "meeting";
         String actualEventName = calendarPage.verifyEvent.getText();
         assertEquals(expectedEventName, actualEventName);
     }
@@ -129,7 +139,7 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @When("user clicks existing event that created before")
     public void user_clicks_existing_event_that_created_before() {
-        //calendarPage.meetingEvent.click();
+        calendarPage.meetingEvent.click();
     }
 
     @When("user deletes event name")
@@ -173,13 +183,15 @@ public class CalendarStepDef_Nurefsan extends BasePage {
     public void user_can_drag_and_drop_the_event_to(String string, String string2) {
 
         Actions actions = new Actions(Driver.getDriver());
-        actions.dragAndDrop(calendarPage.meetingEvent, calendarPage.dragAndDrop).perform();
+        actions.dragAndDrop(calendarPage.meetingEvent, calendarPage.calendarDays.get(6)).perform();
         BrowserUtilities.sleep(3);
     }
 
     @Then("user should be able to see the {string} event day has been successfully changed")
     public void user_should_be_able_to_see_the_event_day_has_been_successfully_changed(String string) {
-
+        String expectedEventName = "meeting";
+        String actualEventName = calendarPage.verifyEvent.getText();
+        assertEquals(expectedEventName, actualEventName);
     }
 
 }
