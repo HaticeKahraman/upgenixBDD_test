@@ -11,6 +11,8 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 
+import java.util.concurrent.TimeUnit;
+
 public class SalesStepDefinitions_Muberra {
 
     SalesPage_Muberra salesPage = new SalesPage_Muberra();
@@ -18,26 +20,25 @@ public class SalesStepDefinitions_Muberra {
     @Given("SalesManager is on the upgenix home page")
     public void sales_manager_is_on_the_upgenix_home_page() {
         BasePage.loginAsSalesManager();
-        BrowserUtilities.waitFor(10);
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
 
     @When("User click to Sales module")
     public void userClickToSalesModule() {
         salesPage.salesButton.click();
-        BrowserUtilities.waitFor(5);
     }
 
     @And("User click Customers button")
     public void userClickCustomersButton() {
         salesPage.customerButton.click();
-        BrowserUtilities.waitFor(5);
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @Then("User click Create button on the top of page")
     public void userClickCreateButtonOnTheTopOfPage() {
         salesPage.createButton.click();
-        BrowserUtilities.waitFor(5);
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
     }
 
@@ -45,9 +46,8 @@ public class SalesStepDefinitions_Muberra {
     public void userFillOutTheNamesFieldBy(String name) {
 
         salesPage.nameInputBox.click();
-        BrowserUtilities.waitFor(5);
         salesPage.nameInputBox.sendKeys(name);
-        BrowserUtilities.waitFor(5);
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
     }
 
@@ -55,7 +55,6 @@ public class SalesStepDefinitions_Muberra {
     public void userClickSaveButtonOnTheTopOfThePage() {
 
         salesPage.saveButtonCustomer.click();
-        //BrowserUtilities.waitFor();
     }
 
     @When("User leave blank names field")
@@ -74,22 +73,19 @@ public class SalesStepDefinitions_Muberra {
 
     @Then("User see page title contains customer {string} successfully.")
     public void user_see_page_title_contains_customer_successfully(String pageTitle){
-
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Assert.assertTrue(Driver.getDriver().getTitle().contains(pageTitle));
 
     }
 
     @Then("User should be able to see customer created on the Customers module successfully.")
     public void userShouldBeAbleToSeeCustomerCreatedOnTheCustomersModuleSuccessfully() {
-        BrowserUtilities.waitFor(4);
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         salesPage.customerButton.click();
-        BrowserUtilities.waitFor(5);
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         salesPage.searchBox.sendKeys("Ayse123"+ Keys.ENTER);
-        BrowserUtilities.waitFor(5);
+        Driver.getDriver().manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Assert.assertTrue(salesPage.visibleCustomerNameOnCustomerPage.isDisplayed());
-
-
-
 
 
     }

@@ -19,7 +19,7 @@ Feature: Upgenix calendar feature
   Scenario: Verify that user can create event by clicking on time box
     When user clicks to the "Calendar" button
     And user clicks to the "Month" button
-    And user clicks on time box "2022-07-05"
+    And user clicks on time box
     And user writes the event as "meeting" to the summary input box.
     And user clicks to the "Create" button
     Then user can see the created event on the calendar widget
@@ -31,7 +31,7 @@ Feature: Upgenix calendar feature
     And user clicks to the "Month" button
     And user clicks existing event that created before
     And user clicks to the "Edit" button
-   #And user choose "<invalid dates range>"
+    And user choose "<invalid dates range>"
     Then user clicks to the "Save" button
     Then user can not edit event with an invalid dates range
 
@@ -68,7 +68,7 @@ Feature: Upgenix calendar feature
     When user clicks to the "Calendar" button
     And user clicks to the "Month" button
     When user can drag and drop the "meeting" event to "2022-07-01"
-    #Then user should be able to see the "meeting" event day has been successfully changed
+    Then user should be able to see the "meeting" event day has been successfully changed
 
 
 
