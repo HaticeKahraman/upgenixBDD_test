@@ -31,6 +31,7 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
      calendarPageSumeyra.CalendarButton.click();
 
 
+
     }
 
     @Then("posmanager lands on a weekly display")
