@@ -5,10 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EmployeePage_Hatice {
+public class EmployeePage_Hatice extends BasePage {
     public EmployeePage_Hatice(){
-
-            PageFactory.initElements(Driver.getDriver(),this);
+        PageFactory.initElements(Driver.getDriver(),this);
     }
 
     @FindBy(xpath = "//a[@data-menu='157']")
