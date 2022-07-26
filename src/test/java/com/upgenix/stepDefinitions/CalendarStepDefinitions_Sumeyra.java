@@ -19,8 +19,8 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
 
     CalendarPage_Sumeyra calendarPageSumeyra=new CalendarPage_Sumeyra();
 
-    @Given("user is on the Upgenix homepage")
-    public void userIsOnTheUpgenixHomepage() {
+    @Given("posmanager is on the Upgenix homepage")
+    public void posmanagerIsOnTheUpgenixHomepage() {
         BasePage.loginAsPosManager();
     }
 

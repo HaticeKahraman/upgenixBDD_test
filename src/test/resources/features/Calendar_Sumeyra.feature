@@ -3,7 +3,7 @@ Feature: Upgenix calendar feature
 	As a PosManager, I should be able to create and to see my meetings and events on my calendar from "Calendar" module.
 
 	Background: For the scenarios in the feature file, user is expected to be on the home page
-		Given user is on the Upgenix homepage
+		Given posmanager is on the Upgenix homepage
 
 
 	@BRT-376
