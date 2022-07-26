@@ -25,16 +25,16 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div[1]/div/div/button[3]")
     public WebElement monthBtn;
 
-    @FindBy(xpath = "//tbody[@class='fc-body']")
-    public WebElement dataDate;
+    @FindBy(xpath = "(//div[@class='fc-bg'])[1]/table/tbody/tr/td")
+    public List<WebElement> calendarDays;
 
     @FindBy(xpath = "//input[@class='o_input']")
     public WebElement eventCreateInput;
 
-    @FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")
+    @FindBy(xpath = "//div[contains(@id,'modal')]/div/div/div[3]/button[1]")
     public WebElement createBtn;
 
-    @FindBy(xpath = "//td[@class='fc-event-container']")
+    @FindBy(xpath = "(//td[@class='fc-event-container'])[1]")
     public WebElement meetingEvent;
 
     //(//td[@class='fc-event-container'])[1]
@@ -47,7 +47,7 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")
     public WebElement saveBtn;
 
-    @FindBy(xpath = "//div[contains(@class,'o_field_name')]")
+    @FindBy(xpath = "(//div[contains(@class,'o_field_name')])[1]")
     public WebElement verifyEvent;
 
     @FindBy(xpath = "//div[@class='o_notification_title']")
@@ -62,7 +62,6 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "//a[text()='Interview']")
     public WebElement tagsDropDownSelectInterview;
 
-    @FindBy(xpath = "//td[@data-date='2022-07-01']")
-    public WebElement dragAndDrop;
-
+    @FindBy(xpath = "//span[text()='Close']")
+    public WebElement closeBtn;
 }
