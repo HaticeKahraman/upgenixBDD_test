@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
 
 public class EmployeeStepDef_Hatice {
     EmployeePage_Hatice employeePage_hatice=new EmployeePage_Hatice();
-    @Given("Posmanager is on the Upgenix homepage")
+    @Given("Posmanager is on the Upgenix homepage ")
     public void posmanagerIsOnTheUpgenixHomepage() {
         BasePage.loginAsPosManager();
     }
