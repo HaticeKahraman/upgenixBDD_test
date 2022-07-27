@@ -9,6 +9,8 @@ import org.openqa.selenium.TakesScreenshot;
 
 public class Hooks {
 
+
+
     //import from io.cucumber.java not from junit
     //@Before (order = 1)
     public void setupScenario(){

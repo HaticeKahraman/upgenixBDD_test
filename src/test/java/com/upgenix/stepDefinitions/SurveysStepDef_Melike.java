@@ -13,23 +13,32 @@ import static org.junit.Assert.*;
 public class SurveysStepDef_Melike {
     SurveysPage_Melike surveysPage_melike = new SurveysPage_Melike();
 
-    @Given("User is on the home page as a posmanager")
-    public void user_is_on_the_home_page_as_a_posmanager() {
+    @Given("User is on the home page as a {string}")
+    public void user_is_on_the_home_page_as(String userType) {
 
-        BasePage.loginAsPosManager();
+        if (userType.equals("posmanager"))
+            BasePage.loginAsPosManager();
+        else if (userType.equals("salesmanager")) {
+            BasePage.loginAsSalesManager();
+        }
     }
-
     @When("User clicks Surveys module")
     public void user_clicks_surveys_module() {
 
         surveysPage_melike.surveysLink.click();
     }
 
-    @When("User clicks Create button")
-    public void user_clicks_button() {
+    @When("User clicks {string} button")
+    public void user_clicks_button(String button) {
 
-        surveysPage_melike.createButton.click();
-
+        switch(button){
+            case "Create":
+                surveysPage_melike.createButton.click();
+                break;
+            default:
+                surveysPage_melike.saveButton.click();
+                break;
+        }
     }
 
     @Then("User should see Surveys {string} header")
@@ -38,11 +47,6 @@ public class SurveysStepDef_Melike {
         assertEquals(surveysPage_melike.Surveys_NewHeader.getText(), newWord);
     }
 
-    @And("User clicks Save button")
-    public void user_clicks_save_button() {
-        surveysPage_melike.saveButton.click();
-
-    }
 
     @Then("User should see {string} error message")
     public void user_should_see_error_message(String errorMsg) {
