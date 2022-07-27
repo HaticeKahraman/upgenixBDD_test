@@ -4,7 +4,7 @@ Feature: Upgenix employee feature
   As a Posmanager, I should be able to create and edit a new employee from "Employees" module
 
   Background: For the scenarios in the feature file, user is expected to be on the home page
-    Given user is on the Upgenix home page
+    Given Posmanager is on the Upgenix home page
 
   Scenario:  Verify that User can reach New Employee Form by clicking Employees --> Create
       When user clicks to the Employee button
