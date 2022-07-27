@@ -1,3 +1,4 @@
+@smoke
 Feature: Upgenix calendar feature
   User Story:
   As a PosManager, I should be able to create and to see my meetings and events on my calendar from "Calendar" module.
@@ -20,7 +21,7 @@ Feature: Upgenix calendar feature
     When user clicks to the "Calendar" button
     And user clicks to the "Month" button
     And user clicks on time box
-    And user writes the event as "meeting" to the summary input box.
+    And user writes the event as "meeting" to the summary input box
     And user clicks to the "Create" button
     Then user can see the created event on the calendar widget
 
@@ -33,7 +34,7 @@ Feature: Upgenix calendar feature
     And user clicks to the "Edit" button
     And user choose "<invalid dates range>"
     Then user clicks to the "Save" button
-    Then user can not edit event with an invalid dates range
+    Then user should be able to see the notice message as expected "The following fields are invalid:"
 
     Examples:
       | invalid dates range |
@@ -59,7 +60,7 @@ Feature: Upgenix calendar feature
     And user clicks existing event that created before
     And user clicks to the "Edit" button
     And user edits event name as "interview"
-    #And user edits date as "01/01/2010"
+    And user edits date as "01/01/2010"
     And user selects tag as interview from tags drop-down
     Then user clicks to the "Save" button
 
