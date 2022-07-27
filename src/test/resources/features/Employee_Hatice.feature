@@ -20,14 +20,14 @@ Feature: Upgenix employee feature
     Scenario: 3. Verify that the "Employee created" message appears under full profile.
       When user clicks to the Employee button
       And  user clicks create button
-      And user get required information
+      And user get required information "name"
       Then user clicks save button
       And user see the "Employee created" message appears under full profile.
 @wip
       Scenario: 4. Verify that the user should be able to see created employee is listed after clicking the Employees module.
         When user clicks to the Employee button
         And  user clicks create button
-        And user get required information
+        And user get required information "name"
         Then user clicks save button
         And user clicks to the Employee button
-        Then user should be able to see check employee is listed
+        Then user should be able to see check "name" employee is listed

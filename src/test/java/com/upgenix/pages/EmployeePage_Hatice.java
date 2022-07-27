@@ -30,4 +30,9 @@ public class EmployeePage_Hatice extends BasePage {
     @FindBy(xpath = "//span[.='ayse']")
     public WebElement verifyTitle;
 
+    @FindBy(xpath = "//*[@class='o_searchview_input']")
+    public WebElement searchButton;
+    @FindBy(xpath = "//span[@class='o_pager_value']")
+    public WebElement countValue;
+
 }

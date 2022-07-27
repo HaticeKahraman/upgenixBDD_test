@@ -4,10 +4,12 @@ import com.upgenix.pages.BasePage;
 import com.upgenix.pages.EmployeePage_Hatice;
 import com.upgenix.utilities.BrowserUtilities;
 import com.upgenix.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.Keys;
 
 import static org.junit.Assert.assertEquals;
 
@@ -42,13 +44,7 @@ public class EmployeeStepDef_Hatice {
         employeePage_hatice.createButton.click();
      BrowserUtilities.sleep(3);
     }
-    @When("user get required information")
-    public void user_get_required_information() {
-        employeePage_hatice.nameBox.click();
-        BrowserUtilities.sleep(1);
-        employeePage_hatice.nameBox.sendKeys("Ayse");
 
-    }
     @Then("user clicks save button")
     public void user_clicks_save_button() {
         employeePage_hatice.saveButton.click();
@@ -60,10 +56,22 @@ public class EmployeeStepDef_Hatice {
         assertEquals(expectedMessage, employeePage_hatice.createdMessage.getText());
     }
 
-    @Then("user should be able to see check employee is listed")
-    public void user_should_be_able_to_see_check_employee_is_listed() {
-        String expectedVerifyTitle =employeePage_hatice.verifyTitle.getText();
-        System.out.println(expectedVerifyTitle);
-        //Assert.assertTrue(expectedVerifyTitle.contains("Ayse"));
+
+    @And("user get required information {string}")
+    public void userGetRequiredInformation(String name) {
+        employeePage_hatice.nameBox.click();
+        BrowserUtilities.sleep(1);
+        employeePage_hatice.nameBox.sendKeys(name);
+
+    }
+
+    @Then("user should be able to see check {string} employee is listed")
+    public void userShouldBeAbleToSeeCheckEmployeeIsListed(String name) {
+        employeePage_hatice.searchButton.click();
+        BrowserUtilities.sleep(2);
+        employeePage_hatice.searchButton.sendKeys(name+ Keys.ENTER);
+        String value=employeePage_hatice.countValue.getText();
+        System.out.println(value);
+
     }
 }
