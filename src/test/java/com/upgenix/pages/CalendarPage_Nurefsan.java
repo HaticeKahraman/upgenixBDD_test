@@ -53,8 +53,11 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "//div[@class='o_notification_title']")
     public WebElement errorMessage;
 
-    @FindBy(xpath = "(//input[@name='start'])[1]")
+    @FindBy(xpath = "(//input[@name='start_date'])[1]")
     public WebElement startDateBtn;
+
+    @FindBy(xpath = "(//input[@name='stop_date'])[1]")
+    public WebElement endDateBtn;
 
     @FindBy(xpath = "//div[@name='categ_ids']")
     public WebElement tagsDropDown;
@@ -62,6 +65,5 @@ public class CalendarPage_Nurefsan {
     @FindBy(xpath = "//a[text()='Interview']")
     public WebElement tagsDropDownSelectInterview;
 
-    @FindBy(xpath = "//span[text()='Close']")
-    public WebElement closeBtn;
+
 }
