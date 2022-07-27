@@ -19,13 +19,15 @@ public class EmployeePage_Hatice extends BasePage {
     @FindBy(xpath = "//button[@class='btn btn-primary btn-sm o_form_button_save']")
     public WebElement saveButton;
 
-    @FindBy(xpath = "//div[@class='o_notification_manager']")
+    @FindBy(xpath = "//div[@class='o_notification undefined o_error']")
     public WebElement errorMessage;
 
-    @FindBy(xpath = "//input[@id='o_field_input_404']")
+    @FindBy(name="name")
     public WebElement nameBox;
 
     @FindBy(xpath = "//*[.='Employee created']")
     public WebElement createdMessage;
+    @FindBy(xpath = "//span[.='ayse']")
+    public WebElement verifyTitle;
 
 }

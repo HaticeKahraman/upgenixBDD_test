@@ -15,7 +15,7 @@ Feature: Upgenix employee feature
     When user clicks to the Employee button
     And  user clicks create button
     Then user clicks save button
-    And user see this error messsage "The following fields are invalid:"
+    And user see this error message "The following fields are invalid: Name"
 
     Scenario: 3. Verify that the "Employee created" message appears under full profile.
       When user clicks to the Employee button
@@ -23,11 +23,11 @@ Feature: Upgenix employee feature
       And user get required information
       Then user clicks save button
       And user see the "Employee created" message appears under full profile.
-
-      Scenario:4. Verify that the user should be able to see created employee is listed after clicking the Employees module.
+@wip
+      Scenario: 4. Verify that the user should be able to see created employee is listed after clicking the Employees module.
         When user clicks to the Employee button
         And  user clicks create button
         And user get required information
         Then user clicks save button
-        And user go back employees module
-        Then user see created employee is listed
+        And user clicks to the Employee button
+        Then user should be able to see check employee is listed
