@@ -29,6 +29,7 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
     @When("posmanager clicks to the {string} button")
     public void posmanager_clicks_to_the_button(String Calendar) {
      calendarPageSumeyra.CalendarButton.click();
+        BrowserUtilities.sleep(5);
 
 
 
@@ -46,33 +47,28 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
 
 
     @And("posmanager click display between {string}")
-    public void posmanagerClickDisplayBetween(String display) {
-        if (display.equalsIgnoreCase("week")){
-            calendarPageSumeyra.WeekButton.click();
-            assertTrue(calendarPageSumeyra.weekVerify.isDisplayed());
-            calendarPageSumeyra.DayButton.click();
-            assertTrue(calendarPageSumeyra.dayVerify.isDisplayed());
-            calendarPageSumeyra.MonthButton.click();
-            assertTrue(calendarPageSumeyra.monthVerify.isDisplayed());
-        }
-        if (display.equalsIgnoreCase("day")){
-            calendarPageSumeyra.DayButton.click();
-            assertTrue(calendarPageSumeyra.dayVerify.isDisplayed());
-            calendarPageSumeyra.MonthButton.click();
-            assertTrue(calendarPageSumeyra.monthVerify.isDisplayed());
-            calendarPageSumeyra.WeekButton.click();
-            assertTrue(calendarPageSumeyra.weekVerify.isDisplayed());
+    public void posmanagerClickDisplayBetween(String dayWeekMonth) {
 
-        }
-        if (display.equalsIgnoreCase("month")){
-            calendarPageSumeyra.MonthButton.click();
-            assertTrue(calendarPageSumeyra.monthVerify.isDisplayed());
-            calendarPageSumeyra.WeekButton.click();
-            assertTrue(calendarPageSumeyra.weekVerify.isDisplayed());
             calendarPageSumeyra.DayButton.click();
-            assertTrue(calendarPageSumeyra.dayVerify.isDisplayed());
+            BrowserUtilities.sleep(5);
+            assertEquals(calendarPageSumeyra.dayVerify.getText(),"Meetings (July 27, 2022)");
+            calendarPageSumeyra.MonthButton.click();
+            BrowserUtilities.sleep(5);
+            assertEquals(calendarPageSumeyra.monthVerify.getText(),"Meetings (July 2022)");
+            calendarPageSumeyra.WeekButton.click();
+            BrowserUtilities.sleep(5);
+            assertEquals(calendarPageSumeyra.weekVerify.getText(),"Meetings (Week 31)");
+            calendarPageSumeyra.MonthButton.click();
+            BrowserUtilities.sleep(5);
+            assertEquals(calendarPageSumeyra.monthVerify.getText(),"Meetings (July 2022)");
+            calendarPageSumeyra.WeekButton.click();
+            BrowserUtilities.sleep(5);
+            assertEquals(calendarPageSumeyra.weekVerify.getText(),"Meetings (Week 31)");
+            calendarPageSumeyra.DayButton.click();
+            BrowserUtilities.sleep(5);
+            assertEquals(calendarPageSumeyra.dayVerify.getText(),"Meetings (July 27, 2022)");
 
-        }
+
     }
 
     //=======================================AC:3========================================================
@@ -81,7 +77,7 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
     @And("user click to the {string} button")
     public void userClickToTheButton(String MonthButton) {
         calendarPageSumeyra.MonthButton.click();
-
+        BrowserUtilities.sleep(5);
 
 
     }
@@ -89,6 +85,7 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
     @And("user click on time box {string}")
     public void userClickOnTimeBox(String day) {
        calendarPageSumeyra.dataDate.click();
+        BrowserUtilities.sleep(5);
 
     }
 
@@ -111,27 +108,34 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
     public void userWriteEventIntoTheInputBox() {
         calendarPageSumeyra.eventCreateInput.sendKeys("dance");
         calendarPageSumeyra.createButton.click();
+        BrowserUtilities.sleep(5);
     }
 //==========================================AC:4===========================================================
 
     @And("user click existing event that created before")
     public void userClickExistingEventThatCreatedBefore() {
-        calendarPageSumeyra.existEvent.click();
+        calendarPageSumeyra.danceEvent.click();
+        BrowserUtilities.sleep(5);
         calendarPageSumeyra.editButton.click();
-
-
     }
-
 
     @And("user edits {string} and {string}")
     public void userEditsAnd(String eventName, String date) {
-        Actions actions = new Actions(Driver.getDriver());
-        actions.click(calendarPageSumeyra.editEventName).sendKeys(Keys.DELETE).sendKeys(eventName).perform();
-      //  calendarPageSumeyra.editEventName.clear();
-       // calendarPageSumeyra.editEventName.sendKeys(eventName);
-        actions.click(calendarPageSumeyra.editDate).sendKeys(Keys.DELETE).sendKeys(date).perform();
-       // calendarPageSumeyra.editDate.clear();
-       // calendarPageSumeyra.editDate.sendKeys(date);
+       calendarPageSumeyra.editEventName.clear();
+        BrowserUtilities.sleep(5);
+        calendarPageSumeyra.editEventName.sendKeys(eventName);
+        BrowserUtilities.sleep(5);
+        //actions.click(calendarPageSumeyra.editDate).sendKeys(Keys.DELETE).sendKeys(date).perform();
+
+        calendarPageSumeyra.editDate.click();
+        BrowserUtilities.sleep(5);
+        calendarPageSumeyra.editDate.clear();
+        BrowserUtilities.sleep(5);
+       calendarPageSumeyra.editDate.sendKeys(date);
+        BrowserUtilities.sleep(5);
+        calendarPageSumeyra.checkbox.click();
+        calendarPageSumeyra.checkbox.isSelected();
+
         calendarPageSumeyra.saveButton.click();
         assertTrue(calendarPageSumeyra.VerifyEvent.isDisplayed());
 
@@ -147,31 +151,35 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
     public void userShouldSeeTheNoticeMessageAsExpected(String expectedErrorMessage) {
         assertEquals(expectedErrorMessage, calendarPageSumeyra.errorMessage.getAttribute("outerText"));
         assertTrue(calendarPageSumeyra.errorMeetingSubject.isDisplayed());
-        assertTrue(calendarPageSumeyra.errorRedBorder.isDisplayed());
+        //assertTrue(calendarPageSumeyra.errorRedBorder.isDisplayed());
     }
 
     @And("user click exist event that created before")
     public void userClickExistEventThatCreatedBefore() {
-        calendarPageSumeyra.existEvent.click();
+        calendarPageSumeyra.danceEvent.click();
     }
 
 
 
     //===============================AC:4 Negative(DragDrop)====================================================
 
-/*
+
     @When("user drag and drop the {string} event to {string}")
     public void userDragAndDropTheEventTo(String event, String date) {
         Actions actions = new Actions(Driver.getDriver());
-        actions.dragAndDrop(calendarPageSumeyra.existEvent,calendarPageSumeyra.targetDragDrop).perform();
+        actions.dragAndDrop(calendarPageSumeyra.danceEvent,calendarPageSumeyra.targetDragDrop).perform();
+        BrowserUtilities.sleep(3);
     }
 
 
     @Then("user should see the {string} event day has been successfully changed")
     public void userShouldSeeTheEventDayHasBeenSuccessfullyChanged(String dance) {
         assertTrue(calendarPageSumeyra.VerifyEvent.isDisplayed());
+      //  String expectedEventName = "dance";
+       // String actualEventName = calendarPageSumeyra.VerifyEvent.getText();
+        //assertEquals(expectedEventName, actualEventName);
     }
 
 
- */
+
 }
