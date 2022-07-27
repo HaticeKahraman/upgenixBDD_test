@@ -12,18 +12,12 @@ Feature: Upgenix calendar feature
 		Then posmanager lands on a weekly display
 
 	@BRT-380
-	Scenario Outline: Verify that user can change display between Day-Week-Month [AutomationS4-Sumeyra]
+	Scenario: Verify that user can change display between Day-Week-Month [AutomationS4-Sumeyra]
 	User can change display
 
 		When posmanager clicks to the "calendar" button
-		And posmanager click display between "<day-week-month>"
+		And posmanager click display between "day-week-month"
 
-		Examples:
-
-			|day-week-month	|
-			|    Week       |
-			|    Month      |
-			|     Day       |
 
 
 	@BRT-381
@@ -49,8 +43,8 @@ Feature: Upgenix calendar feature
 		Examples:
 
 			|eventName  |date 					 |
-			|dance      |07/28/2022 11:00:00     |
-			|celebrate  |07/28/2022 10:00:00     |
+			|softplay   |07/21/2022 11:00:00     |
+			|celebrate  |07/22/2022 10:00:00     |
 
 
 	@BRT-383
