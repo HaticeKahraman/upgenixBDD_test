@@ -8,6 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -186,6 +187,20 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
         assertEquals(actualEventName,expectedEventName);
     }
 
+    //===============================AC:4 (Negative)====================================================
+    @And("user edits {string}")
+    public void userEdits(String arg0) {
+        String update="09/29/2022";
+        JavascriptExecutor js=(JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].value='"+update+"'",calendarPageSumeyra.editDate);
+        calendarPageSumeyra.saveButton.click();
+        //assertTrue(calendarPageSumeyra.OdooErrorMessage.isDisplayed());
 
+    }
 
+    @Then("user should be able to  see the notice message as expected {string}")
+    public void userShouldBeAbleToSeeTheNoticeMessageAsExpected(String expectedError) {
+
+        assertEquals(expectedError, calendarPageSumeyra.OdooErrorMessage.getAttribute("outerText"));
+    }
 }

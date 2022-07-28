@@ -95,4 +95,7 @@ public class CalendarPage_Sumeyra {
 
     @FindBy(xpath = "(//div[@class='fc-bg'])[5]/table/tbody/tr/td")
     public List<WebElement> weeklyDays;
+
+    @FindBy(xpath = "(//h4[@class='modal-title'])[2]")
+    public WebElement OdooErrorMessage;
 }

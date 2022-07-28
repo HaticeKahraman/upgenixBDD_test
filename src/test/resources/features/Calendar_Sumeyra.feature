@@ -66,3 +66,13 @@ Feature: Upgenix calendar feature
 		And user clicks to the "Month" button
 		When user drag and drop the "dance" event to "2022-07-24"
 		Then user should see the "dance" event day has been successfully changed
+
+	@BRT-395
+	Scenario: Verify that user can not edit a created event if the start date is later than the end date[AutomationS4-Sumeyra]
+		When user clicks to the "Calendar" button
+		And user clicks to the "Month" button
+		And user click exist event that created before
+		And user clicks to the "Edit" button
+		And user edits "starting date"
+		And user clicks to the "Save" button
+		Then user should be able to  see the notice message as expected "Odoo Server Error"
