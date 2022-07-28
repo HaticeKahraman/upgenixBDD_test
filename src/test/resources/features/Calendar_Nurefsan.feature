@@ -25,8 +25,15 @@ Feature: Upgenix calendar feature
     And user clicks to the "Create" button
     Then user can see the created event on the calendar widget
 
+  @BRT-379
+  Scenario: Verify that user can edit a created event by drag and drop
+    When user clicks to the "Calendar" button
+    And user clicks to the "Month" button
+    When user can drag and drop the "meeting" event to "2022-07-01"
+    Then user should be able to see the "meeting" event day has been successfully changed
+
   @BRT-377
-  Scenario Outline: Verify that user can not create event with an invalid dates range
+  Scenario Outline: Verify that user can not edit event with an invalid dates range
   Negative edit a created event scenario
     When user clicks to the "Calendar" button
     And user clicks to the "Month" button
@@ -63,13 +70,6 @@ Feature: Upgenix calendar feature
     And user edits date as "01/01/2010"
     And user selects tag as interview from tags drop-down
     Then user clicks to the "Save" button
-
-  @BRT-379
-  Scenario: Verify that user can edit a created event by drag and drop
-    When user clicks to the "Calendar" button
-    And user clicks to the "Month" button
-    When user can drag and drop the "meeting" event to "2022-07-01"
-    Then user should be able to see the "meeting" event day has been successfully changed
 
 
 
