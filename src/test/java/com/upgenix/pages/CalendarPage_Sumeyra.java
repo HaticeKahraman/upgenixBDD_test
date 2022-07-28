@@ -57,7 +57,7 @@ public class CalendarPage_Sumeyra {
     @FindBy(xpath = "//label[@class='control-label']" )
     public WebElement summary;
 
-    @FindBy(xpath = "(//td[@class='fc-event-container'])[5]")
+    @FindBy(xpath = "(//td[@class='fc-event-container'])[1]")
     public WebElement danceEvent;
 
     @FindBy(xpath = "//span[text()='Edit']")
@@ -69,8 +69,9 @@ public class CalendarPage_Sumeyra {
     @FindBy(xpath = "//input[@placeholder='e.g. Business Lunch']")
     public WebElement editEventName;
 
-    @FindBy(xpath = "(//span[@class='o_datepicker_button'])[3]")
+    @FindBy(xpath = "(//input[@name='start_date'])[1]")
     public WebElement editDate;
+  //span[@class='o_datepicker_button'])[3]
 
     @FindBy(xpath = "//div[@class='o_notification_title']")
     public WebElement errorMessage;
@@ -82,9 +83,16 @@ public class CalendarPage_Sumeyra {
    // @FindBy(xpath = "//input[@id='o_field_input_260']")
    // public WebElement errorRedBorder;
 
-    @FindBy(xpath = "//td[@data-date='2022-07-10']")
+    @FindBy(xpath = "(//td[@data-date='2022-07-24'])/span")
     public WebElement targetDragDrop;
+//td[@data-date='2022-07-10']
 
     @FindBy(xpath = "//input[@id='o_field_input_129']")
     public WebElement checkbox;
+
+    @FindBy(xpath = "((//td[@class='fc-event-container'])/a")
+    public WebElement DragdanceEventDrop;
+
+    @FindBy(xpath = "(//div[@class='fc-bg'])[5]/table/tbody/tr/td")
+    public List<WebElement> weeklyDays;
 }

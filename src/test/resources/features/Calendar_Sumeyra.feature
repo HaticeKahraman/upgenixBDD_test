@@ -42,9 +42,9 @@ Feature: Upgenix calendar feature
 
 		Examples:
 
-			|eventName  |date 					 |
-			|softplay   |07/21/2022 11:00:00     |
-			|celebrate  |07/22/2022 10:00:00     |
+			|eventName  |date 		    |
+			|softplay   |07/21/2022     |
+			|celebrate  |07/22/2022     |
 
 
 	@BRT-383
@@ -61,8 +61,8 @@ Feature: Upgenix calendar feature
 
 
 	@BRT-384
-	Scenario: Verify that user can edit a created event by drag and drop [AutomationS4-Nurefsan]
+	Scenario: Verify that user can edit a created event by drag and drop [AutomationS4-Sumeyra]
 		When user clicks to the "Calendar" button
 		And user clicks to the "Month" button
-		When user drag and drop the "dance" event to "2022-07-21"
+		When user drag and drop the "dance" event to "2022-07-24"
 		Then user should see the "dance" event day has been successfully changed

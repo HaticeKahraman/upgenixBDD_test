@@ -8,6 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
 
@@ -127,16 +128,21 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
         BrowserUtilities.sleep(5);
         //actions.click(calendarPageSumeyra.editDate).sendKeys(Keys.DELETE).sendKeys(date).perform();
 
-        calendarPageSumeyra.editDate.click();
-        BrowserUtilities.sleep(5);
-        calendarPageSumeyra.editDate.clear();
-        BrowserUtilities.sleep(5);
-       calendarPageSumeyra.editDate.sendKeys(date);
-        BrowserUtilities.sleep(5);
-        calendarPageSumeyra.checkbox.click();
-        calendarPageSumeyra.checkbox.isSelected();
+     //   calendarPageSumeyra.editDate.click();
+      //  BrowserUtilities.sleep(5);
+      //  calendarPageSumeyra.editDate.clear();
+       // BrowserUtilities.sleep(5);
+      //// String delete=Keys.chord(Keys.CONTROL,"a")+Keys.DELETE;
+      ////  calendarPageSumeyra.editDate.sendKeys(delete);
+      //// calendarPageSumeyra.editDate.sendKeys(date);
+      // BrowserUtilities.sleep(5);
+       // calendarPageSumeyra.checkbox.click();
+       // calendarPageSumeyra.checkbox.isSelected();
+       JavascriptExecutor js=(JavascriptExecutor) Driver.getDriver();
+       js.executeScript("arguments[0].value='"+date+"'",calendarPageSumeyra.editDate);
 
         calendarPageSumeyra.saveButton.click();
+
         assertTrue(calendarPageSumeyra.VerifyEvent.isDisplayed());
 
     }
@@ -161,23 +167,23 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
 
 
 
-    //===============================AC:4 Negative(DragDrop)====================================================
+    //===============================AC:4 (DragDrop)====================================================
 
 
     @When("user drag and drop the {string} event to {string}")
-    public void userDragAndDropTheEventTo(String event, String date) {
+    public void userDragAndDropTheEventTo(String event, String target) {
         Actions actions = new Actions(Driver.getDriver());
-        actions.dragAndDrop(calendarPageSumeyra.danceEvent,calendarPageSumeyra.targetDragDrop).perform();
+        actions.dragAndDrop(calendarPageSumeyra.danceEvent,calendarPageSumeyra.weeklyDays.get(1)).perform();
         BrowserUtilities.sleep(3);
     }
 
 
     @Then("user should see the {string} event day has been successfully changed")
     public void userShouldSeeTheEventDayHasBeenSuccessfullyChanged(String dance) {
-        assertTrue(calendarPageSumeyra.VerifyEvent.isDisplayed());
-      //  String expectedEventName = "dance";
-       // String actualEventName = calendarPageSumeyra.VerifyEvent.getText();
-        //assertEquals(expectedEventName, actualEventName);
+        //assertTrue(calendarPageSumeyra.VerifyEvent.isDisplayed());
+        String expectedEventName = "dance";
+       String actualEventName = calendarPageSumeyra.VerifyEvent.getText();
+        assertEquals(actualEventName,expectedEventName);
     }
 
 
