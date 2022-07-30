@@ -63,8 +63,9 @@ public class CalendarPage_Sumeyra {
     @FindBy(xpath = "//span[text()='Edit']")
     public WebElement editButton;
 
-    @FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")
+    @FindBy(className = "(//div[contains(@id,modal)]/div/div/div[3]/button[1])[4]")
     public WebElement saveButton;
+    //button[@class='btn btn-sm btn-primary']
 
     @FindBy(xpath = "//input[@placeholder='e.g. Business Lunch']")
     public WebElement editEventName;
@@ -85,7 +86,7 @@ public class CalendarPage_Sumeyra {
 
     @FindBy(xpath = "(//td[@data-date='2022-07-24'])/span")
     public WebElement targetDragDrop;
-//td[@data-date='2022-07-10']
+    //td[@data-date='2022-07-10']
 
     @FindBy(xpath = "//input[@id='o_field_input_129']")
     public WebElement checkbox;
@@ -98,4 +99,9 @@ public class CalendarPage_Sumeyra {
 
     @FindBy(xpath = "(//h4[@class='modal-title'])[2]")
     public WebElement OdooErrorMessage;
+
+    @FindBy(xpath = " (//div[@class='modal-footer'])/button[1]")
+    public WebElement SaveForErrorM;
+
+
 }

@@ -29,9 +29,15 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
     //=================================================AC:1===========================================
 
     @When("posmanager clicks to the {string} button")
-    public void posmanager_clicks_to_the_button(String Calendar) {
-     calendarPageSumeyra.CalendarButton.click();
-        BrowserUtilities.sleep(5);
+    public void posmanager_clicks_to_the_button(String Button) {
+
+        if( Button.equals("Calendar")){
+            calendarPageSumeyra.CalendarButton.click();
+            BrowserUtilities.sleep(5);
+        }else{
+            calendarPageSumeyra.saveButton.click();
+        }
+
 
 
 
@@ -188,19 +194,21 @@ public class CalendarStepDefinitions_Sumeyra extends BasePage {
     }
 
     //===============================AC:4 (Negative)====================================================
-    @And("user edits {string}")
-    public void userEdits(String arg0) {
-        String update="09/29/2022";
-        JavascriptExecutor js=(JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].value='"+update+"'",calendarPageSumeyra.editDate);
-        calendarPageSumeyra.saveButton.click();
-        //assertTrue(calendarPageSumeyra.OdooErrorMessage.isDisplayed());
 
-    }
 
     @Then("user should be able to  see the notice message as expected {string}")
     public void userShouldBeAbleToSeeTheNoticeMessageAsExpected(String expectedError) {
+       // Alert alert = Driver.getDriver().switchTo().alert();
+    //   assertTrue(calendarPageSumeyra.OdooErrorMessage.isDisplayed());
+    }
 
-        assertEquals(expectedError, calendarPageSumeyra.OdooErrorMessage.getAttribute("outerText"));
+
+
+
+    @And("user edits starting date as {string}")
+    public void userEditsStartingDateAs(String startingDate) {
+        JavascriptExecutor js=(JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].value='"+startingDate+"'",calendarPageSumeyra.editDate);
+
     }
 }

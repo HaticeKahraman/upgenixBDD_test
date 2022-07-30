@@ -73,6 +73,6 @@ Feature: Upgenix calendar feature
 		And user clicks to the "Month" button
 		And user click exist event that created before
 		And user clicks to the "Edit" button
-		And user edits "starting date"
-		And user clicks to the "Save" button
+		And user edits starting date as "09/20/2022"
+		And posmanager clicks to the "Save" button
 		Then user should be able to  see the notice message as expected "Odoo Server Error"
