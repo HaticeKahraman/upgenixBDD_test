@@ -1,3 +1,4 @@
+@running
 Feature: Upgenix calendar feature
 	User Story:
 	As a PosManager, I should be able to create and to see my meetings and events on my calendar from "Calendar" module.
@@ -23,21 +24,21 @@ Feature: Upgenix calendar feature
 	@BRT-381
 	Scenario: Verify that user can create event by clicking on daily time box [AutomationS4-Sumeyra]
 		When posmanager clicks to the "Calendar" button
-		And user click to the "Month" button
+		And posmanager clicks to the "Month" button
 		And user click on time box "07/28/2022"
 		And user see "Summary" input box.
 		And user write event into the input box
-		And user click to the "Create" button
+		And posmanager clicks to the "Create" button
 		Then user  see the created event on the calendar widget
 
 	@BRT-382
 	Scenario Outline: Verify that user can edit a created event [AutomationS4-Sumeyra]
 		When posmanager clicks to the "Calendar" button
-		And user click to the "Month" button
+		And posmanager clicks to the "Month" button
 		And user click existing event that created before
-		And user click to the "Edit" button
+		And posmanager clicks to the "Edit" button
 		And user edits "<eventName>" and "<date>"
-		And user click to the "Save" button
+		And posmanager clicks to the "Save" button
 		Then user  see the created event on the calendar widget
 
 		Examples:
@@ -51,28 +52,19 @@ Feature: Upgenix calendar feature
 	Scenario: Verify that user can not edit a created event if deletes the event name [AutomationS4-Sumeyra]
 	Negative edit a created event scenario
 
-		When user clicks to the "Calendar" button
-		And user clicks to the "Month" button
+		When posmanager clicks to the "Calendar" button
+		And posmanager clicks to the "Month" button
 		And user click exist event that created before
-		And user clicks to the "Edit" button
+		And posmanager clicks to the "Edit" button
 		And user delete event name
-		And user clicks to the "Save" button
+		And posmanager clicks to the "Save" button
 		Then user should  see the notice message as expected "The following fields are invalid:"
 
 
 	@BRT-384
 	Scenario: Verify that user can edit a created event by drag and drop [AutomationS4-Sumeyra]
-		When user clicks to the "Calendar" button
-		And user clicks to the "Month" button
+		When posmanager clicks to the "Calendar" button
+		And posmanager clicks to the "Month" button
 		When user drag and drop the "dance" event to "2022-07-24"
 		Then user should see the "dance" event day has been successfully changed
 
-	@BRT-395
-	Scenario: Verify that user can not edit a created event if the start date is later than the end date[AutomationS4-Sumeyra]
-		When user clicks to the "Calendar" button
-		And user clicks to the "Month" button
-		And user click exist event that created before
-		And user clicks to the "Edit" button
-		And user edits starting date as "09/20/2022"
-		And posmanager clicks to the "Save" button
-		Then user should be able to  see the notice message as expected "Odoo Server Error"

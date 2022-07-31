@@ -20,38 +20,33 @@ public class CalendarPage_Sumeyra {
 
     @FindBy(xpath = "//div[@class='btn-group btn-group-sm']/button[1]")
     public WebElement DayButton;
-    //div[@class='btn-group btn-group-sm']/button[1]
-    //button[@class='o_calendar_button_day btn btn-sm btn-default']
-    //button[@class='o_calendar_button_day btn btn-sm btn-default active']
+
     @FindBy(xpath = "//div[@class='btn-group btn-group-sm']/button[2]")
     public WebElement WeekButton;
 
     @FindBy(xpath = " //div[@class='o_calendar_buttons']/div/button[3]")
-            //div[@class='btn-group btn-group-sm']/button[3]
-    ///html/body/div[1]/div[2]/div[1]/div[2]/div[1]/div/div/button[3]
     public WebElement MonthButton;
 
     @FindBy(xpath = "//ol[@class='breadcrumb']/li")
     public WebElement weekVerify;
-    //li[. = 'Meetings (Week 30)']
+
     @FindBy(xpath = "//ol[@class='breadcrumb']/li")
     public WebElement dayVerify;
-    //li[. = 'Meetings (July 23, 2022)']
+
     @FindBy(xpath = "//ol[@class='breadcrumb']/li")
     public WebElement monthVerify;
-//li[. = 'Meetings (July 2022)']
 
-    @FindBy(xpath = "//td[@class='fc-day-top fc-thu fc-future']/span")
+
+    @FindBy(xpath = "//td[@data-date='2022-07-28']")
     public WebElement dataDate;
-    //td[@data-date='2022-07-28']
 
     @FindBy(xpath = "//div[@class='form-group']/input")
     public WebElement eventCreateInput;
 
-    @FindBy(xpath = "//button[@class='btn btn-sm btn-primary']")
+    @FindBy(xpath = "//div[contains(@id,'modal')]/div/div/div[3]/button[1]")
     public WebElement createButton;
 
-    @FindBy(xpath = "//div[contains(@class,'o_field_name')]")
+    @FindBy(xpath = "(//div[@class='o_field_name o_field_type_char'])[2]")
     public WebElement VerifyEvent;
 
     @FindBy(xpath = "//label[@class='control-label']" )
@@ -63,16 +58,15 @@ public class CalendarPage_Sumeyra {
     @FindBy(xpath = "//span[text()='Edit']")
     public WebElement editButton;
 
-    @FindBy(className = "(//div[contains(@id,modal)]/div/div/div[3]/button[1])[4]")
-    public WebElement saveButton;
-    //button[@class='btn btn-sm btn-primary']
+    @FindBy(xpath = "(//div[@class='modal-footer'])/button[@type='button']")
+    public WebElement saveButtn;
 
     @FindBy(xpath = "//input[@placeholder='e.g. Business Lunch']")
     public WebElement editEventName;
 
     @FindBy(xpath = "(//input[@name='start_date'])[1]")
     public WebElement editDate;
-  //span[@class='o_datepicker_button'])[3]
+
 
     @FindBy(xpath = "//div[@class='o_notification_title']")
     public WebElement errorMessage;
@@ -81,27 +75,10 @@ public class CalendarPage_Sumeyra {
     public WebElement errorMeetingSubject;
 
 
-   // @FindBy(xpath = "//input[@id='o_field_input_260']")
-   // public WebElement errorRedBorder;
-
-    @FindBy(xpath = "(//td[@data-date='2022-07-24'])/span")
-    public WebElement targetDragDrop;
-    //td[@data-date='2022-07-10']
-
-    @FindBy(xpath = "//input[@id='o_field_input_129']")
-    public WebElement checkbox;
-
-    @FindBy(xpath = "((//td[@class='fc-event-container'])/a")
-    public WebElement DragdanceEventDrop;
-
     @FindBy(xpath = "(//div[@class='fc-bg'])[5]/table/tbody/tr/td")
     public List<WebElement> weeklyDays;
 
-    @FindBy(xpath = "(//h4[@class='modal-title'])[2]")
-    public WebElement OdooErrorMessage;
 
-    @FindBy(xpath = " (//div[@class='modal-footer'])/button[1]")
-    public WebElement SaveForErrorM;
 
 
 }
