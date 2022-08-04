@@ -6,36 +6,36 @@ import org.openqa.selenium.support.FindBy;
 public class Survey_Musa extends BasePage{
 
 
-    @FindBy (name = "//div//input[@name='login']")
+    @FindBy (name = "login")
     public WebElement emailBtn ;
 
 
-    @FindBy (name = "//div//input[@name='password']")
+    @FindBy (name = "password")
     public WebElement passwordBtn ;
 
-    @FindBy (name = "//div/button[@type='submit']")
+    @FindBy (xpath = "//div/button[@type='submit']")
     public WebElement loginBtn ;
 
-    @FindBy (className = "//div//button[@class = 'btn btn-primary btn-sm o-kanban-button-new']")
+    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div[1]/div/button[1]")
     public WebElement createBtn ;
 
-    @FindBy (id = "//div//h1/input[@id ='o_field_input_155']")
+    @FindBy (xpath = "//div//h1/input[@name = 'title']")
     public WebElement surveyTitle ;
 
-    @FindBy (className = "//div//button[@class = 'btn btn-primary btn-sm o_form_button_save']")
+    @FindBy (xpath = "//button[@class='btn btn-primary btn-sm o_form_button_save']")
     public WebElement saveBtn ;
 
-    @FindBy (className = "//div[@class = 'o_notification_title']")
+    @FindBy (xpath = "//div[@class = 'o_notification_title']")
     public WebElement fillTheBtn ;
 
-    @FindBy (className = "//div/p[. = 'Survey created']")
+    @FindBy (xpath = "//div/p[.='Survey created']")
     public WebElement surveyCreated;
 
-    @FindBy (linkText = "a[href='/web#menu_id=475&action=']")
-    public WebElement surveyBtn;
+    @FindBy(xpath = "(//li[@style='display: block;'])[15]")
+    public WebElement surveysBtn;
 
-    @FindBy (className = "//div//h4//span[.='Project Owner']")
-    public WebElement verifyBtn ;
+    @FindBy (xpath = "//div//h4//span[.='Project Owner']")
+    public WebElement projectOwner ;
 
 
 }
