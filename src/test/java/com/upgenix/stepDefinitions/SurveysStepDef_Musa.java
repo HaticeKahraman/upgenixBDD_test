@@ -78,7 +78,7 @@ public class SurveysStepDef_Musa {
     public void user_can_be_able_to_see_is_appeared(String string) {
 
 
-        assertTrue(survey_musa.fillTheBtn.isDisplayed());
+        assertTrue(survey_musa.errorMessage.isDisplayed());
 
 
 

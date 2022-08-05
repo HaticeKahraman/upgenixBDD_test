@@ -26,7 +26,7 @@ public class Survey_Musa extends BasePage{
     public WebElement saveBtn ;
 
     @FindBy (xpath = "//div[@class = 'o_notification_title']")
-    public WebElement fillTheBtn ;
+    public WebElement errorMessage ;
 
     @FindBy (xpath = "//div/p[.='Survey created']")
     public WebElement surveyCreated;
