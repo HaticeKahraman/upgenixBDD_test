@@ -8,10 +8,7 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.ElementClickInterceptedException;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -49,33 +46,10 @@ public class CalendarStepDef_Nurefsan extends BasePage {
         } else {
             System.out.println("Button is not expected!");
         }
-//        switch (Btn) {
-//            case "Calendar":
-//                BrowserUtilities.sleep(5);
-//                calendarPage.calendarBtn.click();
-//                break;
-//            case "Month":
-//                calendarPage.monthBtn.click();
-//                break;
-//            case "Create":
-//                calendarPage.createBtn.click();
-//                BrowserUtilities.sleep(5);
-//                break;
-//            case "Edit":
-//                calendarPage.editBtn.click();
-//                break;
-//            case "Save":
-//                calendarPage.saveBtn.click();
-//                break;
-//            default:
-//                System.out.println("Button is unexpected!");
-
-        }
-
+    }
 
     @Then("user first land on a weekly display")
     public void user_first_land_on_a_weekly_display() {
-        //assertTrue(calendarPage.firstWeeklyDisplay.getAttribute("innerHTML").contains("Week"));
         assertEquals(true, calendarPage.firstWeeklyDisplay.getAttribute("innerHTML").contains("Week"));
     }
 
@@ -101,11 +75,11 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @When("user clicks on time box")
     public void user_clicks_on_time_box() {
-            calendarPage.calendarDays.get(1).click();
-            BrowserUtilities.sleep(3);
+        calendarPage.calendarDays.get(1).click();
+        BrowserUtilities.sleep(3);
     }
 
-    @And("user writes the event as {string} to the summary input box.")
+    @And("user writes the event as {string} to the summary input box")
     public void userWritesTheEventAsToTheSummaryInputBox(String eventName) {
         calendarPage.eventCreateInput.sendKeys(eventName);
         BrowserUtilities.sleep(3);
@@ -122,20 +96,19 @@ public class CalendarStepDef_Nurefsan extends BasePage {
 
     @And("user choose {string}")
     public void userChoose(String invalidDatesRange) {
-        calendarPage.startDateBtn.click();
-        calendarPage.startDateBtn.clear();
-        calendarPage.startDateBtn.sendKeys(invalidDatesRange);
+        if (invalidDatesRange.equals("01/03/1905")) {
+            String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
+            calendarPage.startDateBtn.sendKeys(del + invalidDatesRange);
+            calendarPage.saveBtn.click();
+        }else{
+            String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
+            calendarPage.endDateBtn.sendKeys(del + invalidDatesRange);
+            calendarPage.saveBtn.click();
+        }
 
-    }
-
-    @Then("user can not edit event with an invalid dates range")
-    public void user_can_not_edit_event_with_an_invalid_dates_range() {
-        calendarPage.saveBtn.click();
-        //assert???
     }
 
 //////////////////////////////////edit event (negative)///////////////////////////
-
 
     @When("user clicks existing event that created before")
     public void user_clicks_existing_event_that_created_before() {
@@ -146,13 +119,11 @@ public class CalendarStepDef_Nurefsan extends BasePage {
     public void user_deletes_event_name() {
         calendarPage.editEventName.clear();
         BrowserUtilities.sleep(3);
-
     }
 
     @Then("user should be able to see the notice message as expected {string}")
     public void user_should_see_the_notice_message_as_expected(String expectedErrorMessage) {
         assertEquals(expectedErrorMessage, calendarPage.errorMessage.getAttribute("outerText"));
-
     }
 
 
@@ -165,10 +136,11 @@ public class CalendarStepDef_Nurefsan extends BasePage {
         calendarPage.editEventName.sendKeys(editEventName);
     }
 
-//    @When("user edits date as {string}")
-//    public void user_edits_date_as(String string) {
-//
-//    }
+    @When("user edits date as {string}")
+    public void user_edits_date_as(String editDate) {
+        String del = Keys.chord(Keys.CONTROL, "a") + Keys.DELETE;
+        calendarPage.startDateBtn.sendKeys(del + editDate);
+    }
 
     @When("user selects tag as interview from tags drop-down")
     public void user_selects_tag_as_interview_from_tags_drop_down() {
@@ -186,10 +158,8 @@ public class CalendarStepDef_Nurefsan extends BasePage {
         actions.dragAndDrop(calendarPage.meetingEvent, calendarPage.calendarDays.get(6)).perform();
         BrowserUtilities.sleep(3);
     }
-
     @Then("user should be able to see the {string} event day has been successfully changed")
-    public void user_should_be_able_to_see_the_event_day_has_been_successfully_changed(String string) {
-        String expectedEventName = "meeting";
+    public void user_should_be_able_to_see_the_event_day_has_been_successfully_changed(String expectedEventName) {
         String actualEventName = calendarPage.verifyEvent.getText();
         assertEquals(expectedEventName, actualEventName);
     }
