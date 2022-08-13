@@ -21,7 +21,7 @@ public class Survey_Musa extends BasePage{
     @FindBy(xpath = "(//li[@style='display: block;'])[15]")
     public WebElement surveysBtn;
 
-    @FindBy (css = "button[type = 'button'][class = 'btn btn-primary btn-sm o-kanban-button-new']")
+    @FindBy (css = "button[class='btn btn-primary btn-sm o-kanban-button-new']")
     public WebElement createBtn ;
 
     @FindBy (name = "title")
