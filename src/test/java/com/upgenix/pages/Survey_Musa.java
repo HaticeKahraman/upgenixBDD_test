@@ -3,39 +3,43 @@ package com.upgenix.pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 public class Survey_Musa extends BasePage{
 
 
-    @FindBy (name = "login")
+    @FindBy (css = "#login")
     public WebElement emailBtn ;
 
 
-    @FindBy (name = "password")
+    @FindBy (id = "password")
     public WebElement passwordBtn ;
 
-    @FindBy (xpath = "//div/button[@type='submit']")
+    @FindBy (className = "btn btn-primary")
     public WebElement loginBtn ;
-
-    @FindBy (xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div[1]/div/button[1]")
-    public WebElement createBtn ;
-
-    @FindBy (xpath = "//div//h1/input[@name = 'title']")
-    public WebElement surveyTitle ;
-
-    @FindBy (xpath = "//button[@class='btn btn-primary btn-sm o_form_button_save']")
-    public WebElement saveBtn ;
-
-    @FindBy (xpath = "//div[@class = 'o_notification_title']")
-    public WebElement fillTheBtn ;
-
-    @FindBy (xpath = "//div/p[.='Survey created']")
-    public WebElement surveyCreated;
 
     @FindBy(xpath = "(//li[@style='display: block;'])[15]")
     public WebElement surveysBtn;
 
-    @FindBy (xpath = "//div//h4//span[.='Project Owner']")
-    public WebElement projectOwner ;
+    @FindBy (css = "button[class='btn btn-primary btn-sm o-kanban-button-new']")
+    public WebElement createBtn ;
+
+    @FindBy (name = "title")
+    public WebElement surveyTitle ;
+
+    @FindBy (css = "button[class ='btn btn-primary btn-sm o_form_button_save']")
+    public WebElement saveBtn ;
+
+    @FindBy (css = "div[class='o_notification_title']")
+    public WebElement errorMessage ;
+
+    @FindBy (className = "o_thread_message_content")
+    public WebElement surveyCreated;
+
+    @FindBy (xpath = "//div[1]/div[32]/div[2]/h4/span")
+    public WebElement verifyJobTitle;
+
+
 
 
 }
